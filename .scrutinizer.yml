@@ -1,0 +1,19 @@
+checks:
+    php:
+        code_rating: true
+        duplication: true
+
+tools:
+    external_code_coverage: true
+
+filter:
+    paths:
+        - src/*
+
+build:
+    environment:
+        php:
+            version: 7.0.8
+    dependencies:
+        before:
+            - mysql -u root -e 'create database symfony;'
