@@ -1,0 +1,17 @@
+Izhak\UserBundle\Entity\User:
+    user1:
+        username (unique): 'admin'
+        email (unique): 'admin@change.me'
+        password: '$2a$06$Gn76dV2RkK41bdg7eDwDiOTbY08443k2RFEn9TF4ZYZYIoTlx2Vqa'
+        roles: ['ROLE_ADMIN']
+        enabled: '1'
+    user2:
+        username (unique): 'dev'
+        email (unique): 'dev@change.me'
+        password: '$2a$06$JaDkvcFo0Rz/.HGnpkKxH.F7Bkv1.RA9f9hYhw.f3fJybSMVGRtmu'
+        roles: ['ROLE_USER']
+        enabled: '1'
+    user{3..10}:
+        username (unique): <firstName()>
+        email (unique): <email()>
+        password: <password()>

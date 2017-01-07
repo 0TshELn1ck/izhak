@@ -33,7 +33,9 @@
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7",
+        "hautelook/alice-bundle": "^1.4",
+        "doctrine/data-fixtures": "^1.2"
     },
     "scripts": {
         "symfony-scripts": [
