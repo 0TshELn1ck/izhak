@@ -25,7 +25,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('UserBundle:User')->findAll();
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($users, $request->query->getInt('page', 1), 15);
+        $pagination = $paginator->paginate($users, $request->query->getInt('page', 1), 20);
 
         return ['users' => $pagination];
     }
