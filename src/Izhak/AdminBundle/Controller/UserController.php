@@ -42,7 +42,7 @@ class UserController extends Controller
             $em->flush();
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Користувача ' . $user->getUsername() . ' видалено!');
+                ->add('success', 'Користувача "' . $user->getUsername() . '" видалено!');
         }
 
         return $this->redirect($this->generateUrl('admin_user_list'));
@@ -69,7 +69,7 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $plainPassword = $editForm->get('password')->getData();
+            $plainPassword = $editForm->get('plainPassword')->getData();
             if (!empty($plainPassword)) {
                 //encode the password
                 $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
@@ -99,7 +99,6 @@ class UserController extends Controller
         $users = $em->getRepository('UserBundle:User')->findAll();
         if (!$users) {
             throw $this->createNotFoundException('Unable to find User entity.');
-
         }
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($users, $request->query->getInt('page', 1), 20);

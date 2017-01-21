@@ -2,9 +2,80 @@
 
 {% block content %}
 
-    {{ form_start(userForm) }}
-    <input type="submit" class="btn-solid btn-lg btn-block" value="submit"/>
-    {{ form_end(userForm) }}
+    <section class="content">
+        <div class="row">
+            {{ form_start(userForm) }}
+            <div class="col-md-6">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#main" data-toggle="tab" aria-expanded="true">Основна інформація</a>
+                        </li>
+                        <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">Налаштування</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="main">
+
+                            <div class="box-body">
+                                <span class="text-red">{{ form_errors(userForm.email) }}</span>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    {{ form_widget(userForm.email, { 'attr': {'class': "form-control",
+                                        'placeholder': 'Почтова адреса'} }) }}
+                                </div>
+                                <br>
+
+                                <span class="text-red">{{ form_errors(userForm.username) }}</span>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    {{ form_widget(userForm.username, { 'attr': {'class': "form-control",
+                                        'placeholder': 'Логін'} }) }}
+                                </div>
+                                <br>
+
+                                <span class="text-red">{{ form_errors(userForm.plainPassword.first) }}</span>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                    {{ form_widget(userForm.plainPassword.first, { 'attr': {'class': "form-control",
+                                        'placeholder': "Пароль"} }) }}
+                                </div>
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                    {{ form_widget(userForm.plainPassword.second, { 'attr': {'class': "form-control",
+                                        'placeholder': "Повторіть пароль"} }) }}
+                                </div>
+                                <br>
+
+                            </div>
+                            <!-- /.box-body -->
+
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="settings">
+                            <div class="box-body">
+                                <div class="input-group">
+                                    Користувача активовано: {{ form_widget(userForm.enabled) }}
+                                </div>
+                                <br>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                    <div class="box-footer">
+                        <input type="submit" class="btn btn-primary" value="Зберегти"/>
+                    </div>
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+            {{ form_end(userForm) }}
+
+        </div>
+        <!-- /.row -->
+    </section>
 
 {% endblock %}
 
