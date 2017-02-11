@@ -1,4 +1,5 @@
 {% extends '@Admin/base.html.twig' %}
+
 {% block content_header %}
     <section class="content-header">
         <h1>
@@ -43,7 +44,6 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th></th>
                                 <th>ID</th>
                                 <th>Логін</th>
                                 <th>Почтова адреса</th>
@@ -53,11 +53,6 @@
                             </tr>
                             {% for item in users %}
                                 <tr>
-                                    <td>
-                                        <a class="btn btn-primary btn-xs" title="Переглянути"
-                                           href="{{ path('admin_user_show', {'id': item.id}) }}">
-                                            <span class="fa fa-eye"></span></a>
-                                    </td>
                                     <td>{{ item.id }}</td>
                                     <td>{{ item.username }}</td>
                                     <td>{{ item.email }}</td>
@@ -74,6 +69,11 @@
                                         {% else %}
                                             {{ item.lastLogin|date("d-m-Y  h:i A") }}
                                         {% endif %}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary btn-xs" title="Переглянути"
+                                           href="{{ path('admin_user_show', {'id': item.id}) }}">
+                                            <span class="fa fa-eye"></span></a>
                                     </td>
                                     <td>
                                         <a class="btn btn-warning btn-xs" title="Редагувати"

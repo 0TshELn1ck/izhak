@@ -75,6 +75,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Izhak\UserBundle\Entity\User
+    from_email:
+        address:        noreply@example.com
+        sender_name:    Izhak
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
