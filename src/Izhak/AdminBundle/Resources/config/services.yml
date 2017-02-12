@@ -1,4 +1,7 @@
 services:
-#    admin.example:
-#        class: AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    app.users_count.twig_extension:
+        class: Izhak\AdminBundle\Twig\UsersCountTwigExtention
+        public: true
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: twig.extension }

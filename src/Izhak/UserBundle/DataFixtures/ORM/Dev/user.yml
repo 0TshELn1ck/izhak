@@ -11,7 +11,7 @@ Izhak\UserBundle\Entity\User:
         password: '$2a$06$JaDkvcFo0Rz/.HGnpkKxH.F7Bkv1.RA9f9hYhw.f3fJybSMVGRtmu'
         roles: ['ROLE_USER']
         enabled: '1'
-    user{3..10}:
+    user{3..50}:
         username (unique): <firstName()>
         email (unique): <email()>
         password: <password()>
