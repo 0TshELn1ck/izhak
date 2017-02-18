@@ -1,0 +1,6 @@
+Izhak\AdminBundle\Entity\Dish:
+    dish{1..30}:
+        name (unique): <word()>
+        description: <text($maxNbChars = 200)>
+        price: <numberBetween($min = 2, $max = 37)>
+        category: <randomElement(['first', 'second', 'salad', 'other'])>
