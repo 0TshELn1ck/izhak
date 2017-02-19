@@ -74,15 +74,16 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>65</h3>
+                        {% set dishesCount = dishesCount() %}
+                        <h3>{{ dishesCount }}</h3>
 
-                        <p>Unique Visitors</p>
+                        <p>Страв</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="ion ion-pizza"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
+                    <a href="{{ path('admin_dish_list') }}" class="small-box-footer">
+                        Перелік <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>

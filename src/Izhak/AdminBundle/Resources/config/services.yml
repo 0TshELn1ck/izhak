@@ -5,3 +5,10 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: twig.extension }
+
+    app.dishes_count.twig_extension:
+        class: Izhak\AdminBundle\Twig\DishesCountTwigExtention
+        public: true
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: twig.extension }

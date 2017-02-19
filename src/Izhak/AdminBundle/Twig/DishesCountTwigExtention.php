@@ -4,7 +4,7 @@ namespace Izhak\AdminBundle\Twig;
 
 use Doctrine\ORM\EntityManager;
 
-class UsersCountTwigExtention extends \Twig_Extension
+class DishesCountTwigExtention extends \Twig_Extension
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -25,7 +25,7 @@ class UsersCountTwigExtention extends \Twig_Extension
      */
     public function getName()
     {
-        return 'user_count_extention';
+        return 'dish_count_extention';
     }
 
     /**
@@ -34,20 +34,20 @@ class UsersCountTwigExtention extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('usersCount', [$this, 'usersCount'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('dishesCount', [$this, 'dishesCount'], ['is_safe' => ['html']]),
         ];
     }
 
     /**
      * @return array
      */
-    public function usersCount()
+    public function dishesCount()
     {
-        $repository = $this->em->getRepository('UserBundle:User');
-        $users = $repository->findAll();
-        $usersCount = count($users);
+        $repository = $this->em->getRepository('AdminBundle:Dish');
+        $dishes = $repository->findAll();
+        $dishesCount = count($dishes);
 
-        return $usersCount;
+        return $dishesCount;
     }
 
 }
