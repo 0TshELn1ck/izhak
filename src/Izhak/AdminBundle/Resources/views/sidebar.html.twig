@@ -14,7 +14,7 @@
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="q" class="form-control" placeholder="Пошук...">
                 <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -24,9 +24,10 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header">Основна навігація</li>
 
             <li><a href="{{ path("admin_index") }}"><i class="fa fa-dashboard"></i> <span>Головна</span></a></li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span> Користувачі</span>
@@ -37,6 +38,19 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ path("admin_user_list") }}"><i class="fa fa-list"></i> Перелік</a></li>
                     <li><a href="{{ path("admin_user_new") }}"><i class="fa fa-user-plus"></i> Додати</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-leaf"></i> <span> Страви</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path("admin_dish_list") }}"><i class="fa fa-list"></i> Перелік</a></li>
+                    <li><a href="{{ path("admin_dish_new") }}"><i class="fa fa-plus"></i> Додати</a></li>
                 </ul>
             </li>
         </ul>

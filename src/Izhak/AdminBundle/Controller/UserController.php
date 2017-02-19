@@ -20,6 +20,24 @@ class UserController extends Controller
 {
 
     /**
+     * Creates a form to delete a User entity.
+     * @param User $user The User entity
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    private function createDeleteForm(User $user)
+    {
+
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_user_delete', array('id' => $user->getId())))
+            ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, [
+                'label' => 'Remove',
+                'attr' => ['class' => 'btn btn-xs btn-danger']
+            ])
+            ->getForm();
+    }
+
+    /**
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -30,11 +48,7 @@ class UserController extends Controller
     {
         if ($id) {
             $em = $this->getDoctrine()->getManager();
-            $user = $em->getRepository('UserBundle:User')->findOneBy(
-                array(
-                    'id' => $id,
-                )
-            );
+            $user = $em->getRepository('UserBundle:User')->findOneBy(['id' => $id]);
             if (!$user) {
                 throw $this->createNotFoundException('Unable to find User entity.');
             }
@@ -59,7 +73,7 @@ class UserController extends Controller
     public function editAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('UserBundle:User')->findOneBy(array('id' => $id));
+        $user = $em->getRepository('UserBundle:User')->findOneBy(['id' => $id]);
         if (!$user) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
@@ -80,6 +94,9 @@ class UserController extends Controller
             }
             $em->persist($user);
             $em->flush();
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Користувача "' . $user->getUsername() . '" відредаговано!');
 
             return $this->redirect($this->generateUrl('admin_user_list'));
         }
@@ -155,21 +172,4 @@ class UserController extends Controller
         return [];
     }
 
-    /**
-     * Creates a form to delete a User entity.
-     * @param User $user The User entity
-     * @return \Symfony\Component\Form\FormInterface
-     */
-    private function createDeleteForm(User $user)
-    {
-
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_user_delete', array('id' => $user->getId())))
-            ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, [
-                'label' => 'Видалити',
-                'attr' => ['class' => 'btn btn-xs btn-danger']
-            ])
-            ->getForm();
-    }
 }
