@@ -3,4 +3,4 @@ Izhak\AdminBundle\Entity\Dish:
         name (unique): <word()>
         description: <text($maxNbChars = 200)>
         price: <numberBetween($min = 2, $max = 37)>
-        category: <randomElement(['first', 'second', 'salad', 'other'])>
+        category: <randomElement(['first_dish', 'second_dish', 'garnish', 'salad', 'other'])>

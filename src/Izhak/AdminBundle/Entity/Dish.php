@@ -24,7 +24,7 @@ class Dish
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=128, unique=true)
+     * @ORM\Column(name="name", type="string", length=128, unique=true, nullable=false)
      */
     private $name;
 
@@ -38,7 +38,7 @@ class Dish
     /**
      * @var int
      *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
 
@@ -147,4 +147,3 @@ class Dish
         $this->category = $category;
     }
 }
-
